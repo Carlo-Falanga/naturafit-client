@@ -1,11 +1,15 @@
-function App() {
+import { Routes, Route } from "react-router-dom";
+import GuestLayout from "./layouts/GuestLayout";
+import RecipesPage from "./pages/RecipesPage";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 
-
+export default function App() {
   return (
-    <>
-        <h1>Hello</h1>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<GuestLayout />}>
+        <Route index element={<RecipesPage />} />
+        <Route path="recipes/:id" element={<RecipeDetailPage />} />
+      </Route>
+    </Routes>
+  );
 }
-
-export default App
