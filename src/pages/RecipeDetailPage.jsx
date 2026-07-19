@@ -47,22 +47,36 @@ export default function RecipeDetailPage() {
 
       <div className="row mb-4">
         <div className="col-6 col-md-3">
-            <strong>Preparazione</strong>
-            <p>{recipe.prep_time} min</p>
+          <strong>Preparazione</strong>
+          <p>{recipe.prep_time} min</p>
         </div>
-           <div className="col-6 col-md-3">
-            <strong>Cottura</strong>
-            <p>{recipe.cook_time} min</p>
+        <div className="col-6 col-md-3">
+          <strong>Cottura</strong>
+          <p>{recipe.cook_time} min</p>
         </div>
-           <div className="col-6 col-md-3">
-            <strong>Porzioni</strong>
-            <p>{recipe.servings}</p>
+        <div className="col-6 col-md-3">
+          <strong>Porzioni</strong>
+          <p>{recipe.servings}</p>
         </div>
-           <div className="col-6 col-md-3">
-            <strong>Difficoltà</strong>
-            <p>{recipe.difficulty}</p>
+        <div className="col-6 col-md-3">
+          <strong>Difficoltà</strong>
+          <p>{recipe.difficulty}</p>
         </div>
+
       </div>
+
+      <h2 className="h4">Valori nutrizionali</h2>
+      <ul className="mb-4">
+        <li>Calorie: {recipe.calories} kcal</li>
+        <li>Proteine: {recipe.protein} g</li>
+        <li>Carboidrati: {recipe.carbs} g</li>
+        <li>Grassi: {recipe.fats} g</li>
+        <li>Fibre: {recipe.fiber} g</li>
+        <li>Zuccheri: {recipe.sugar} g</li>
+      </ul>
+
+      <h2 className="h4">Preparazione</h2>
+      <p style={{whiteSpace: "pre-line"}}>{recipe.instructions}</p>
     </div>
   );
 }
