@@ -33,6 +33,29 @@ export default function RecipesPage() {
                   style={{ height: "200px", objectFit: "cover" }}
                 />
               )}
+
+              <div className="card-body">
+                <h5 className="card-title">{recipe.title}</h5>
+
+                <p className="mb-2">
+                  <span className="badge bg-secondary me-1">
+                    {recipe.category.name}
+                  </span>
+                  <span className="badge bg-success">
+                    {recipe.calories} kcal
+                  </span>
+                </p>
+                <p className="card-text text-muted">
+                  {recipe.prep_time + recipe.cook_time} min
+                </p>
+
+                <Link
+                  to={`/recipes/${recipe.id}`}
+                  className="btn btn-outline-success btn-sm"
+                >
+                  Vedi la ricetta
+                </Link>
+              </div>
             </div>
           </div>
         ))}
