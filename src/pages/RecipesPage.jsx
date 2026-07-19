@@ -27,7 +27,7 @@ export default function RecipesPage() {
             <div className="card h-100">
               {recipe.image && (
                 <img
-                  src=""
+                  src={`${import.meta.env.VITE_STORAGE_URL}/${recipe.image}`}
                   alt={recipe.title}
                   className="card-img-top"
                   style={{ height: "200px", objectFit: "cover" }}
