@@ -25,6 +25,44 @@ export default function RecipeDetailPage() {
       </Link>
 
       <h1>{recipe.title}</h1>
+
+      <p>
+        <span className="badge bg-secondary me-1">{recipe.category.name}</span>
+        {recipe.tags.map((tag) => (
+          <span className="badge bg-light text-dark me-1" key={tag.id}>
+            {tag.name}
+          </span>
+        ))}
+      </p>
+
+      {recipe.image && (
+        <img
+          src={`${import.meta.env.VITE_STORAGE_URL}/${recipe.image}`}
+          alt={recipe.title}
+          className="img-fluid rounded mb-4"
+        />
+      )}
+
+      <p>{recipe.description}</p>
+
+      <div className="row mb-4">
+        <div className="col-6 col-md-3">
+            <strong>Preparazione</strong>
+            <p>{recipe.prep_time} min</p>
+        </div>
+           <div className="col-6 col-md-3">
+            <strong>Cottura</strong>
+            <p>{recipe.cook_time} min</p>
+        </div>
+           <div className="col-6 col-md-3">
+            <strong>Porzioni</strong>
+            <p>{recipe.servings}</p>
+        </div>
+           <div className="col-6 col-md-3">
+            <strong>Difficoltà</strong>
+            <p>{recipe.difficulty}</p>
+        </div>
+      </div>
     </div>
   );
 }
