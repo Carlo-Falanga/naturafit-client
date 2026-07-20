@@ -5,6 +5,7 @@ import { getRecipes } from "../services/api";
 export default function RecipesPage() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getRecipes().then((data) => {
@@ -12,6 +13,10 @@ export default function RecipesPage() {
       setLoading(false);
     });
   }, []);
+
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
@@ -27,11 +32,19 @@ export default function RecipesPage() {
       <div className="container py-4">
         <h1 className="mb-4">Ricette</h1>
 
+        <input
+          type="text"
+          className="form-control mb-4"
+          placeholder="Cerca una ricetta per nome..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
         {loading ? (
           <p>Caricamento...</p>
         ) : (
           <div className="row g-4">
-            {recipes.map((recipe) => (
+            {filteredRecipes.map((recipe) => (
               <div className="col-12 col-md-6 col-lg-4" key={recipe.id}>
                 <div className="card h-100">
                   {recipe.image && (
@@ -69,6 +82,10 @@ export default function RecipesPage() {
               </div>
             ))}
           </div>
+        )}
+
+        {!loading && filteredRecipes.length === 0 && (
+          <p>Nessuna ricetta trovata.</p>
         )}
       </div>
     </>
