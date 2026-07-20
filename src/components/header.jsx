@@ -9,7 +9,7 @@ export default function Header() {
         </Link>
         <a
           className="btn btn-outline-success btn-sm"
-          href="http://naturafit-api.test/dashboard"
+          href={import.meta.env.VITE_ADMIN_URL}
         >
           Area admin
         </a>
